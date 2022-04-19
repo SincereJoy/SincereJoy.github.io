@@ -37,7 +37,7 @@ author:
   type      : # "person" (default), "organization"
   name      : ZE
   url       :
-  avatar    : # path or url of avatar image (square)
+  avatar    : ./avatar.png # path or url of avatar image (square)
   bio       : 
   email     : 
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
