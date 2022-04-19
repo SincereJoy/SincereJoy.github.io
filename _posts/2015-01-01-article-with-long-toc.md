@@ -1,6 +1,6 @@
 ---
 title: Test - Article with Long TOC
-key: 20150101
+key: 1
 tags: Test
 ---
 
