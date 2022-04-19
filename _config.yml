@@ -20,7 +20,7 @@ text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : 情绪泛滥指北
+title   : 
 description: > # this means to ignore newlines until "Language & timezone"
 
 
@@ -35,11 +35,11 @@ timezone: Asia/Shanghai# see https://en.wikipedia.org/wiki/List_of_tz_database_t
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : ZE
+  name      : ZE's TARDIS
   url       :
   avatar    : ./avatar.jpg # path or url of avatar image (square)
   bio       : 
-  email     : 
+  email     : zhaoyizy@whu.edu.cn
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
   weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
@@ -118,7 +118,7 @@ sharing:
 ## => Comments
 ##############################
 comments:
-  provider: false # false (default), "disqus", "gitalk", "valine", "custom"
+  provider: gitalk # false (default), "disqus", "gitalk", "valine", "custom"
 
   ## Disqus
   disqus:
@@ -127,11 +127,11 @@ comments:
   ## Gitalk
   # please refer to https://github.com/gitalk/gitalk for more info.
   gitalk:
-    clientID    : # GitHub Application Client ID
-    clientSecret: # GitHub Application Client Secret
-    repository  : # GitHub repo
-    owner       : # GitHub repo owner
-    admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
+    clientID    : 4370b535cec13dfda70f # GitHub Application Client ID
+    clientSecret: 334841541d33a68596c1393998ce2638e9224a37 # GitHub Application Client Secret
+    repository  : SincereJoy.github.io # GitHub repo
+    owner       : SincereJoy # GitHub repo owner
+    admin: SincereJoy# GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
       # - your GitHub Id
 
   ## Valine
@@ -147,13 +147,13 @@ comments:
 ## => Pageview
 ##############################
 pageview:
-  provider: false # false (default), "leancloud", "custom"
+  provider: leancloud # false (default), "leancloud", "custom"
 
   ## Leancloud
   leancloud:
-    app_id    : # LeanCloud App id
-    app_key   : # LeanCloud App key
-    app_class : # LeanCloud App class
+    app_id    : VtPshP96LqiRXkhLenSRenBa-gzGzoHsz # LeanCloud App id
+    app_key   : OIed4gyd27kdaPo3Gxk25KGh # LeanCloud App key
+    app_class : Test # LeanCloud App class
 
 
 ## => Search
@@ -173,8 +173,8 @@ analytics:
 
   ## Google Analytics
   google:
-    tracking_id : # Google Analytics id for the site
-    anonymize_ip: false # Anonymize IP tracking for Analytics
+    tracking_id : G-130SS1GTSH # Google Analytics id for the site
+    anonymize_ip: true # Anonymize IP tracking for Analytics
 
 
 ## => Build
