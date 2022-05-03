@@ -21,7 +21,6 @@ tags: C++
 
 ### **函数模板 function template**
 变量类型参数化，适用于函数体相同，但处理的参数类型不同的情况。
-
 例：
 ~~~cpp
 #include <iostream>
@@ -54,9 +53,7 @@ int main() {
 
 ### **函数指针 pointer to function**
 
-函数名前加“*”, 可以指向具有相同参数列表和返回值类型的函数。
-
-例如
+函数名前加“*”, 可以指向具有相同参数列表和返回值类型的函数。例如:
 ~~~cpp
 const vector<int>* (*seq_ptr)(int);
 ~~~
@@ -69,7 +66,7 @@ const vector<int>* (*seq_ptr)(int) = 0;
 seq_ptr = fibon_seq;
 ~~~
 
-函数指针列表：
+#### 函数指针列表：
 ~~~cpp
 const vector<int>* (*seq_array[])(int) = { 
     fibon_seq, lucas_seq, pell_seq, 
@@ -93,7 +90,7 @@ extern const vector<int>* (*seq_array[seq_cnt])(int);
 上述例子中的seq_cnt不需要用extern修饰的原因是：seq_cnt是一个静态变量，其定义对除该头文件以外的文件是不可见的。
 {:.info}
 
-#include “headfile.h" **vs.** #include <headfile>
+#### #include “headfile.h" **vs.** #include <headfile>
 
 简单来说，如果头文件与包括该文件在内的程序文本文件在同一目录中，我们使用引号。如果它在其他任何地方，我们使用角括号<>。
 严格来说，如果文件名是由角括号包围的，则假定文件为项目或标准头文件。寻找它的搜索检查了一组预定义的位置。如果文件名是由一对引号包围的，则假定该文件是用户提供的头文件
