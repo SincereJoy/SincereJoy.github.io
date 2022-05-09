@@ -21,17 +21,17 @@ author: ZE
 
 ## Terminology
 
-对抗训练
+### 对抗训练
 
 min-max problem：
 
 先最大化损失生成对抗样本，然后用对抗样本训练，最小化对抗样本造成的损失。
 
-对抗性净化
+### 对抗性净化
 
 将对抗样本还原为干净样本。
 
-自监督学习
+### 自监督学习
 
 自监督的学习旨在学习对无标签数据的中间表示，这些表示可以用于各种下游任务，其中该任务的监督来自数据本身。
 
@@ -41,7 +41,9 @@ min-max problem：
 
 本文主要考虑针对分类任务的防御，但作者说他们的方法也可以扩展到其他任务上。作者把对抗性净化问题表示为一个带约束的优化问题：
 
-$min_\pi L_{cls}((g \circ f)(x_{pfy}),y) \ \ \ \ \ \ \  s.t. ||x_{pfy}-x_{adv}|| \leq \epsilon_{adv}, x_{pfy} = \pi(x_{adv}) \ \ \ \ \ \ \  (1)$
+$min_\pi L_{cls}((g \circ f)(x_{pfy}),y) 
+\ \ \ \ \ \ \  s.t. ||x_{pfy}-x_{adv}|| \leq \epsilon_{adv}, x_{pfy} = \pi(x_{adv}) 
+\ \ \ \ \ \ \  (1)$
 
 其中$f$是特征提取器，$g$是分类器，$L_{cls}$是分类器的交叉熵损失，$x_{pfy}$是净化后的样本，$y$为干净样本对应的类别，$x_{adv}$是对抗样本，$\epsilon_{adv}$是对抗样本的扰动上限，$\pi$是净化算法。
 
@@ -53,11 +55,14 @@ $min_\pi L_{cls}((g \circ f)(x_{pfy}),y) \ \ \ \ \ \ \  s.t. ||x_{pfy}-x_{adv}||
 ### 自监督在线净化
 
 在训练时，将分类器$g$的loss $L_{cls}$跟一个自监督辅助模型的loss $L_{aux}$一起优化，相当于在正常训练的目标函数里添加一个正则化项。
-$min_\theta {L_{cls}((g \circ f)(x;\theta_{enc};\theta_{cls}),y)+\alpha L_{aux}((h \circ f)(x;\theta_{enc};\theta_{cls}))} \ \ \ \ \ \ \  (2)$
+$min_\theta {L_{cls}((g \circ f)(x;\theta_{enc};\theta_{cls}),y)+\alpha L_{aux}((h \circ f)(x;\theta_{enc};\theta_{cls}))} 
+\ \ \ \ \ \ \  (2)$
 
 测试阶段，用L_aux代替L_cls进行样本的净化（类似于对抗训练的公式）。
 
-$min_\pi L_{aux}((h \circ f)(x_{pfy})) \ \ \ \ \ \ \  s.t. ||x_{pfy}-x_{adv}|| \leq \epsilon_{pfy}, x_{pfy} = \pi(x_{adv}) \ \ \ \ \ \ \  (3)$
+$min_\pi L_{aux}((h \circ f)(x_{pfy})) 
+\ \ \ \ \ \ \  s.t. ||x_{pfy}-x_{adv}|| \leq \epsilon_{pfy}, x_{pfy} = \pi(x_{adv}) 
+\ \ \ \ \ \ \  (3)$
 
 公式（3）中的$\epsilon_{pfy}$是净化的界限
 
@@ -67,7 +72,9 @@ $\epsilon_{pfy}$是怎么得到的？
 
 净化过程可以看作PGD算法的逆，PGD算法是一步步地向使分类loss L_cls增大地方向增大扰动，而这篇文章提出的净化算法也是一步步地增大扰动，不过是朝使辅助loss L_aux减小地方向调整。最终需要求解的优化问题如下：
 
-$min_\pi L_{aux}((h \circ f)(x_{adv}+\delta)) \ \ \ \ \ \ \  s.t. ||\delta|| \leq \epsilon_{pfy}, x_{adv}+\delta \in [0,1] \ \ \ \ \ \ \  (4)$
+$min_\pi L_{aux}((h \circ f)(x_{adv}+\delta)) 
+\ \ \ \ \ \ \  s.t. ||\delta|| \leq \epsilon_{pfy}, x_{adv}+\delta \in [0,1] 
+\ \ \ \ \ \ \  (4)$
 
 优化过程采用多步的方式计算扰动：
 
