@@ -1,8 +1,8 @@
 ---
-title: 2021_ICLR_ONLINE ADVERSARIAL PURIFICATION BASED ON SELF-SUPERVISED LEARNING
+title: ICLR'21 - ONLINE ADVERSARIAL PURIFICATION BASED ON SELF-SUPERVISED LEARNING
 key: 3
 author: ZE
-tags: 论文阅读，Adversarial purification
+tags: 论文阅读 Adversarial_purification
 ---
 
 论文链接：https://openreview.net/forum?id=_i3ASPp12WS
