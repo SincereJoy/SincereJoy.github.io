@@ -57,6 +57,7 @@ $min_\pi L_{cls}((g \circ f)(x_{pfy}),y)
 ### 自监督在线净化
 
 在训练时，将分类器$g$的loss $L_{cls}$跟一个自监督辅助模型的loss $L_{aux}$一起优化，相当于在正常训练的目标函数里添加一个正则化项。
+
 $min_\theta {L_{cls}((g \circ f)(x;\theta_{enc};\theta_{cls}),y)+\alpha L_{aux}((h \circ f)(x;\theta_{enc};\theta_{cls}))} 
 \ \ \ \ \ \ \  (2)$
 
