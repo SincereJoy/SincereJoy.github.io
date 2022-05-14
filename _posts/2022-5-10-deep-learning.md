@@ -1,12 +1,13 @@
 
 ## 常用损失函数
+|---
 | 损失函数 | 公式 | 特点 
 |:-:|:-:|:-:
 | 0-1损失函数 | $L(y,f(\bm{x};\theta) = I(y \neq f(\bm{x};\theta)), I为指示函数.$ | 直观，但不连续，导数为0，难以优化
-| 平方损失函数 | $L(y,f(\bm{x};\theta) = \frac{1}{2}(y - f(\bm{x};\theta))^2.$ | 适合$y \in \R$的情况，不适用于分类问题
+| 平方损失函数 | $L(y,f(\bm{x};\theta) = \frac{1}{2}(y - f(\bm{x};\theta))^2.$ | 适合$y \in \R$且y连续的情况，不适用于分类问题
 | 交叉熵损失函数 | $L(\bm{y},f(\bm{x};\theta) = -\bm{y} log f(\bm{x};\theta) = - \sum_{c=1}^Cy_clog f_c(\bm{x};\theta).$ | 又称负对数似然函数（从$y$为one-hot向量时的公式不难看出），适用于分类问题（y为离散值）
 | Hinge损失函数 | $L(y,f(\bm{x};\theta) = \max (0,1-yf(\bm{x};\theta)) \equiv [1-yf(\bm{x};\theta)]_+$ | 适用于二分类问题，$y \in \{-1,+1\}$
-|
+|---
 
 `为什么平方损失函数不适用于分类问题？`{:.info}
 
