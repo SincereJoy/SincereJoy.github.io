@@ -37,6 +37,7 @@ public:
 ~~~
 
 `Tips`{:.info}
+
 **map与unordered_map的区别**
 
 map的内部实现是一个红黑树，红黑树的每个节点代表了map中的一个元素。map内的元素是按照二叉搜索树存储的，是有序的，使用中序遍历可以将**键值**按从小到大的顺序遍历。map的查增删查操作都是对红黑树进行操作。
@@ -145,7 +146,7 @@ public:
 
 **思路二：DFS回溯**
 
-https://leetcode.cn/problems/4sum/solution/mei-kan-dao-ji-ge-hui-su-de-ti-jie-na-wo-lai-xie-y/
+[题解](https://leetcode.cn/problems/4sum/solution/mei-kan-dao-ji-ge-hui-su-de-ti-jie-na-wo-lai-xie-y/)
 
 ### 代码实现
 排序+双指针
