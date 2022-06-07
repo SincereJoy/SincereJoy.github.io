@@ -4,6 +4,7 @@ key: 4
 author: ZE
 tags: leetcode, array, two-pointer, C++
 ---
+<!--more-->
 
 ## [1]两数之和
 ### 题目描述
