@@ -26,3 +26,6 @@ Gemfile.lock
 _site/
 .jekyll-metadata
 .jekyll-cache/
+
+./_post/N*.md
+

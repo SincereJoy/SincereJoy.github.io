@@ -2,19 +2,19 @@
 title: Leetcode-array-X数之和
 key: 4
 author: ZE
-tags: leetcode, array, two-pointer, C++
+tags: leetcode array two-pointer C++
 ---
 <!--more-->
 
 ## [1]两数之和
 ### 题目描述
-> 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+> 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target  的那 两个 整数，并返回它们的数组下标。
 > 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
 > 你可以按任意顺序返回答案。
 
 ### 解题思路
 遍历数组nums，用哈希表存储数组中出现过的数字。
-对于每个数字，检查哈希表中是否存在与其和为target的数，如果存在，直接返回这两个数字的下表，否则将当前数字存入哈希表。
+对于每个数字，检查哈希表中是否存在与其和为target的数，如果存在，直接返回这两个数字的下标，否则将当前数字存入哈希表。
 
 ### 代码实现
 
@@ -27,9 +27,9 @@ public:
         for(int i =0;i<len;i++){
             auto it = hashtable.find(target-nums[i]); // 返回一个迭代器 unordered_map<int,int>::iterator
             if(it != hashtable.end()){ // 如果哈希表中有我们查询的数
-                return {it->second, i}; // it->second表示取值，在这里是数组中元素的下标；it->first则表示取索引，在这里是数组中元素的值。
+                return {it->second, i}; // it->second表示取值，在这里是数组中元素的下标；it->first则表示取键，在这里是数组中元素的值。
             }
-            hashtable[nums[i]] = i; // 注意索引是数值，值是下标
+            hashtable[nums[i]] = i; // 注意键是数值，值是下标
         }
         return {}; // 返回空数组
     }
