@@ -20,7 +20,7 @@ tags: algorithm C++ leetcode
 > 输出: 1
 > 
 > 解释: 移除 [1,3] 后，剩下的区间没有重叠。
-> 
+
 **思路**：
 1. 将区间列表按照右边界(endi)从小到大排序；
 2. 取最小的右边界（curEnd），依次检查后面的区间是否跟它重叠（check if starti < curEnd），若重叠，则计数count++；
