@@ -28,6 +28,22 @@ tags: algorithm C++ leetcode
 
 **代码**
 ```cpp
+class Solution {
+public:
+    int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+        int n=intervals.size();
+        sort(intervals.begin(),intervals.end(),[](vector<int>& a,vector<int>& b){ return a[1]<b[1]; });
+        int end=intervals[0][1], count=0;
+        for(int i=1;i<n;++i){
+            if(intervals[i][0]<end){
+                count++;
+            }else{
+                end = intervals[i][1];
+            }
+        }
+        return count;
+    }
+}    
 
 ```
 
@@ -42,7 +58,21 @@ tags: algorithm C++ leetcode
 
 **代码**
 ```cpp
-
+class Solution {
+public:
+    int findMinArrowShots(vector<vector<int>>& points) {
+        int n=points.size();
+        sort(points.begin(),points.end(),[](vector<int>& a,vector<int>& b){ return a[1]<b[1]; });
+        int end=points[0][1],count=1;
+        for(int i=1;i<n;++i){
+            if(points[i][0]>end){
+                count++;
+                end = intervals[i][1];
+            }
+        }
+        return count;
+    }
+}
 ```
 
 ### [Leetcode 1288. 删除被覆盖区间 Mid](https://leetcode.cn/problems/remove-covered-intervals/)
@@ -60,7 +90,26 @@ tags: algorithm C++ leetcode
 
 **代码**
 ```cpp
-
+class Solution {
+public:
+    int removeCoveredIntervals(vector<vector<int>>& intervals) {
+        int n=intervals.size();
+        sort(intervals.begin(),intervals.end(),[](vector<int>& a,vector<int>& b){ 
+            if(a[0]==b[0]) return a[1]>b[1];
+            return a[0]<b[0]; 
+            });
+        int end=intervals[0][1], count=1;
+        for(int i=1;i<n;++i){
+            if(intervals[i][1]<=end){
+                continue;
+            }else{
+                count++;
+                end = intervals[i][1];
+            }
+        }
+        return count;
+    }
+}
 ```
 ## 合并区间
 合并区间问题跟重叠区间的思路差不多，不过重叠区间只要求返回区间的个数，而合并区间问题会要求返回处理后的区间列表。
@@ -76,7 +125,30 @@ tags: algorithm C++ leetcode
 
 **代码**
 ```cpp
-
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        int n=intervals.size();
+        if (n == 0) {
+            return {};
+        }
+        sort(intervals.begin(),intervals.end(),[](vector<int>& a,vector<int>& b){ 
+            if(a[0]==b[0]) return a[1]>b[1];
+            return a[0]<b[0]; 
+        });
+        vector<vector<int>> merged;
+        for (int i = 0; i < n; ++i) {
+            int L = intervals[i][0], R = intervals[i][1];
+            if (!merged.size() || merged.back()[1] < L) {
+                merged.push_back({L, R});
+            }
+            else {
+                merged.back()[1] = max(merged.back()[1], R);
+            }
+        }
+        return merged;
+    }
+}
 ```
 ### [Leetcode 1024. 视频拼接 mid](https://leetcode.cn/problems/video-stitching/)
 > 你将会获得一系列视频片段，这些片段来自于一项持续时长为 time 秒的体育赛事。这些片段可能有所重叠，也可能长度不一。
@@ -98,10 +170,34 @@ tags: algorithm C++ leetcode
 
 **代码**
 ```cpp
-
+class Solution {
+public:
+     int videoStitching(vector<vector<int>>& clips, int time) {
+        sort(clips.begin(),clips.end(),[](vector<int>& a,vector<int>& b){
+            if(a[0]==b[0]){
+                return a[1]>b[1];
+            }
+            return a[0]<b[0];
+        });
+        if(clips[0][0]!=0) return -1;
+        int end = 0,next=end,count=0,i=0;
+        while(i<clips.size() && clips[i][0]<=end){
+            while(i<clips.size() && clips[i][0]<=end){
+                next = max(next,clips[i][1]);
+                i++;
+            }
+            end = next;
+            count++;
+            if(end>=time){
+                return count;
+            }
+        }
+        return -1;
+    }
+};
 ```
 
-### [Leetcode 986.区间列表的交集 Hard](https://leetcode.cn/problems/interval-list-intersections/)
+### [Leetcode 986.区间列表的交集 Mid](https://leetcode.cn/problems/interval-list-intersections/)
 >给定两个由一些**闭区间**组成的列表，firstList 和 secondList，其中 firstList[i] = [starti, endi] 而 secondList[j] = [startj, endj] 。每个区间列表都是成对**不相交**的，并且**已经排序**。
 >
 >返回这两个区间列表的交集 。
@@ -120,7 +216,29 @@ tags: algorithm C++ leetcode
 
 **代码**
 ```cpp
-
+class Solution {
+public:
+    vector<vector<int>> intervalIntersection(vector<vector<int>>& firstList, vector<vector<int>>& secondList) {
+        int n1=firstList.size(), n2=secondList.size();
+        if(n1==0||n2==0) return {};
+        int i=0,j=0;
+        vector<vector<int>> res;
+        int start=0,end=0;
+        while(i<n1&&j<n2){
+            start = max(firstList[i][0], secondList[j][0]);
+            end = min(firstList[i][1],secondList[j][1]);
+            if(end>=start){
+                res.emplace_back(vector<int>{start,end});
+            }
+            if(end==firstList[i][1]){
+                i++;
+            }else{
+                j++;
+            }
+        }
+        return res;
+    }
+};
 ```
 ## 会议室问题
 

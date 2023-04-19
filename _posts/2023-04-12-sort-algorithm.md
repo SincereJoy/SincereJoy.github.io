@@ -48,12 +48,12 @@ void QuickSort(vector<int>& nums, int l, int r){
 ```
 ## 冒泡排序
 稳定
+
 |---
 | 最好   | 最坏  | 平均
 |:-:|:-:|:-:
 | O(n)  | 0(n^2) | 0(n^2)
 |---
-
 
 如果一次遍历中没有发生过交换，说明数组已经有序，直接结束。数组已经有序的情况下达到最好时间复杂度O(n)。
 
@@ -77,6 +77,7 @@ vector<int> BubldeSort(vector<int>& nums){
 ```
 ## 选择排序
 不稳定
+
 |---
 | 最好   | 最坏  | 平均
 |:-:|:-:|:-:
@@ -105,6 +106,7 @@ vector<int> SelectSort(vector<int>& nums){
 ```
 ## 堆排序
 不稳定
+
 |---
 | 最好   | 最坏  | 平均
 |:-:|:-:|:-:
@@ -146,6 +148,7 @@ void HeapSort(vector<int>& nums){
 ```
 ## 插入排序
 稳定
+
 |---
 | 最好   | 最坏  | 平均
 |:-:|:-:|:-:
@@ -172,6 +175,7 @@ vector<int> InsertSort(vector<int>& nums){
 
 ## 希尔排序
 不稳定
+
 |---
 | 最好   | 最坏  | 平均
 |:-:|:-:|:-:
@@ -202,6 +206,7 @@ vector<int> ShellSort(vector<int>& nums){
 ```
 ## 归并排序
 稳定
+
 |---
 | 最好   | 最坏  | 平均
 |:-:|:-:|:-:
