@@ -154,6 +154,7 @@ void HeapSort(vector<int>& nums){
 |:-:|:-:|:-:
 | O(n)  | 0(n^2) | 0(n^2) 
 |---
+
 ```cpp
 vector<int> InsertSort(vector<int>& nums){
     int n=nums.size();
@@ -212,6 +213,7 @@ vector<int> ShellSort(vector<int>& nums){
 |:-:|:-:|:-:
 | O(nlogn)  | 0(nlogn) | 0(nlogn) 
 |---
+
 ```cpp
 vector<int> merge(vector<int>& vec1, vector<int>& vec2){
     vector<int> res;
