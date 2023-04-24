@@ -39,7 +39,7 @@ int main(){
 
 unique_ptr并不总是管理有效的对象，被默认初始化的unique_ptr中只保存一个空指针，调用了release()或者管理的指针通过移动赋值移交给了另一个智能指针的情况下，也无法通过unique_ptr访问有效的对象，因此在使用unique_ptr之前需要判断它是否保存着有效的资源。unique_ptr可以被强制转换成一个bool类型，所以我们可以直接通过if(u)来判断它是否有效。
 
-### std::make_unique<T>(args)
+**std::make_unique<T>(args)**:
 C++14提供了一个模板函数std::make_unique<T>(args)，该函数返回一个unique_ptr，保存用args初始化的T类型对象。最好用make_unique去初始化unique_ptr，而不是使用new构造对象。
 
 ### 自定义删除器
@@ -58,14 +58,15 @@ shared_ptr是共享指针，允许多个共享指针指向同一个对象，并�
 可以用unique_ptr移动初始化shared_ptr，反之不行。
 {:.info}
 
-### std::make_shared<T>(args)
-C++11提供了模板函数make_shared<T>(args)，该函数返回一个shared_ptr，保存用args初始化的T类型对象。
+**std::make_shared<T>(args)**: C++11提供了模板函数make_shared<T>(args)，该函数返回一个shared_ptr，保存用args初始化的T类型对象。
 
-### 引用计数是如何实现的？
+引用计数是如何实现的？
 shared_ptr类里保存了一个引用计数器指针，构造函数中+1，析构函数中-1
+{:.info}
 
-### 线程安全问题
+线程安全问题
 shared_ptr引用计数用了atomic原子操作，是无锁但线程安全的，shared_ptr本身是并发读安全的，但并发写不安全。
+{:.info}
 
 ## weak_ptr
 weak_ptr指向一个由shared_ptr管理的对象，它没有所指向对象的控制权，它不会影响shared_ptr的引用计数。

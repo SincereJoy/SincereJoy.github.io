@@ -2,8 +2,9 @@
 title: 排序算法
 key: 5
 author: ZE
-tags: algorithm C++
+tags: algorithm
 ---
+常用排序算法的原理与C++实现
 <!--more-->
 
 ## 快速排序
