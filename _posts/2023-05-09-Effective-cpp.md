@@ -1,6 +1,6 @@
 ---
 title: Effective C++
-key: 10
+key: 11
 author: ZE
 tags: C++
 ---
