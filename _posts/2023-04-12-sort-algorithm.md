@@ -1,6 +1,6 @@
 ---
 title: 排序算法
-key: 5
+key: 6
 author: ZE
 tags: algorithm
 ---

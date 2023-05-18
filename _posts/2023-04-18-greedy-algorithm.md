@@ -1,6 +1,6 @@
 ---
 title: 贪心算法
-key: 6
+key: 7
 author: ZE
 tags: algorithm leetcode
 ---
