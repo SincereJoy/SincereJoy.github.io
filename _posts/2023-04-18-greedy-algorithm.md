@@ -1,5 +1,5 @@
 ---
-title: 贪心算法
+title: 贪心算法-区间问题
 key: 7
 author: ZE
 tags: algorithm leetcode
