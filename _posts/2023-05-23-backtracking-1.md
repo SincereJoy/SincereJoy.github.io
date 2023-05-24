@@ -245,6 +245,51 @@ void backtrack(vector<int>& nums,vector<bool>& visited, vector<vector<int>>& res
     }
 }
 ```
+## 总结
+用回溯算法解决排列组合问题的总体框架是一样的。
+
+```cpp
+vector<vector<int>> res; //也可以以参数的方式传入到函数中
+vector<int> cur;
+// int sum=0;
+
+vector<vector<int>> solution(vector<int>& nums,...){
+    // 元素有重复时需要排序，无重但需要求和时也需要排序（用于剪枝）
+    // sort(...)
+    backtrack(...)
+}
+
+void backtrack(vector<int>& nums,[int index,vector<bool>& visited],...){
+    if(...){
+        // 子集问题加入res条件：无
+        // 组合问题加入res条件：cur.size()==k （根据题目，可变换）
+        // 排列问题加入res条件：cur.size()==nusm.size()
+        res.emplace_back(cur);
+        return ;
+    }
+
+    // 组合/子集问题从index往后遍历
+    // 排列问题不需要index,每次都从头遍历，然后用visited防止重复访问同一个元素
+    for(int i=index;i<nums.size();++i){
+        // 元素可重复时用于去重
+        // if(i>index && nums[i]==nums[i-1]){ 
+        //      continue;
+        // }
+
+        // 排列问题防止重复访问
+        // if(visited[i]) continue;
+
+        // visited[i] = true;
+        cur.emplace_back(nums[i]); // 选择
+        // 元素可复选
+        // backtrack(nums,i,...);
+        // 元素不可复选 
+        backtrack(nums,i+1,...);  
+        cur.pop_back() // 撤销
+        // visited[i] = false;
+    }
+}
+```
 ## 参考连接
 
 https://labuladong.gitee.io/algo/di-ling-zh-bfe1b/hui-su-sua-56e11/
